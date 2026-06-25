@@ -1,0 +1,16 @@
+{
+  "name": "acre-homes",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "acre.homes — Property Problem Specialists. Static Astro site for Netlify.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.16.0",
+    "@astrojs/sitemap": "^3.2.0"
+  }
+}

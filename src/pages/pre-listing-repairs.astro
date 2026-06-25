@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import oregonBefore from '../assets/oregon-house-demolition-debris.jpeg';
+import oregonAfter from '../assets/oregon-house-after-landscaped.jpeg';
+
+const faqs = [
+  {
+    q: "What should I fix before listing, and what should I disclose and price for?",
+    a: "Rule of thumb. Fix anything that's a safety issue, a deal-breaker for lenders (active leaks, structural concerns, failed systems), or that costs less to fix than the price hit you'd take on disclosure. Disclose and price for everything else. The visit takes about an hour and the answer is usually clear by the end of it."
+  },
+  {
+    q: "How fast can you turn around an assessment?",
+    a: "Diagnostic visit within 24 hours in most cases. Written assessment within 48 hours of the visit. If the deal is mid-escrow and the clock is short, I will work to that clock."
+  },
+  {
+    q: "What's the cost of a pre-listing diagnostic?",
+    a: "The first visit is free within my normal service area (Corvallis, Philomath, Albany, Lebanon, Independence, Monmouth, Dallas, Harrisburg). A written assessment for negotiation or disclosure is a flat fee scoped to the situation. We'll discuss the exact fee on the call."
+  },
+  {
+    q: "Will buyers and lenders accept your assessment?",
+    a: "Yes, when it's appropriate. I'm a licensed general contractor in Oregon (CCB# 250993) operating under Aspen Custom Ranch Enterprises, LLC. My assessments include the scope, the methodology, and a real cost number, the documentation lenders, buyers, and inspectors are used to seeing."
+  },
+  {
+    q: "Can you actually do the repairs, or do you only assess?",
+    a: "Either. I can take the project on as your licensed general contractor, oversee it as Owner's Rep while you hire the subs directly, or just hand off the assessment and step out. Whichever serves the transaction best."
+  }
+];
+---
+<BaseLayout
+  title="Pre-Listing Inspection Repairs in the Willamette Valley"
+  description="A scary finding on the inspection report doesn't have to kill the deal. ACRE provides fast, honest pre-listing repair assessments across Corvallis, Albany, Philomath, and the Willamette Valley. 40 years of experience. Independent advice."
+>
+  <section class="container hero">
+    <div class="eyebrow">Willamette Valley</div>
+    <h1>Pre-listing repairs that save the deal and avoid focus on work that is optional.</h1>
+    <p>An inspector found something. The buyer is rattled. The listing agent is calling. You need a real number, fast, from someone who isn't trying to sell you the most expensive solution. That's me.</p>
+    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="tel:+19709893064" class="btn">Call for same-day diagnostic</a>
+      <a href="/contact/?problem=pre-listing" class="btn btn--ghost">Describe the finding</a>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="before-after">
+      <div class="before-after__pair">
+        <div class="before-after__panel">
+          <span class="before-after__tag">Before</span>
+          <Image
+            src={oregonBefore}
+            alt="The Philomath property mid-demolition. Brown weathered siding, broken concrete and wood debris piled in the foreground, Republic Services dumpster, structural openings exposed."
+            widths={[400, 700, 1000]}
+            sizes="(max-width: 700px) 100vw, 590px"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+        <div class="before-after__panel">
+          <span class="before-after__tag">After</span>
+          <Image
+            src={oregonAfter}
+            alt="The same Philomath property finished: dark vertical siding, white trim, pergola with vines, hammock chair, hydrangeas and daylilies, chickens in the foreground."
+            widths={[400, 700, 1000]}
+            sizes="(max-width: 700px) 100vw, 590px"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      </div>
+      <div class="before-after__caption">
+        <span><b>A Philomath property the seller couldn't list.</b> Foundation Repair and Full Restoration. Now a property the owners love.</span>
+        <span>ACRE</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="container container--narrow prose">
+    <h2>The three things that kill deals</h2>
+    <p class="lede">After 40 years of watching transactions, I can tell you that almost every dead deal dies for one of three reasons. A scary finding without a number, a bad-faith repair estimate from the wrong contractor, or a seller who hides something. I help with the first two.</p>
+
+    <h3>1. Scary finding without a number</h3>
+    <p>"There may be foundation movement." "Possible water intrusion in the crawlspace." "Recommend further evaluation by a licensed contractor." These inspector phrases are deal-killers, not because the underlying issue is necessarily severe, but because uncertainty is what scares buyers. Get a real number and the conversation changes from "should I walk?" to "should I ask for a credit?"</p>
+
+    <h3>2. A scope mismatch from the wrong type of contractor</h3>
+    <p>When the inspector flags "possible foundation movement," the natural next call is a foundation specialist. The specialist is excellent at foundation work. But if the underlying issue is actually drainage, or settling that just needs monitoring, the result is a specialist-sized scope for a problem that may have called for a different answer. An independent assessment from a licensed GC who isn't tied to any single trade can confirm what the right scope actually is, and route the work to the best-matched specialist when work is genuinely needed. That gives buyer and seller a number both sides can work with.</p>
+
+    <h3>3. The seller who hides something</h3>
+    <p>Can't help with that one. But if you have a finding, get ahead of it. The Oregon residential disclosure form is unforgiving, and the buyer's inspector is going to find it anyway. Disclose with a number is always better than disclose without one, and "disclose without one" is always better than "don't disclose."</p>
+
+    <h2>Common pre-listing situations I handle</h2>
+    <ul>
+      <li><strong>Foundation findings on older Corvallis and Albany homes.</strong> We find the most efficient solution for the problem, no upsell.</li>
+      <li><strong>Wet crawlspaces in Willamette Valley properties.</strong> Most older homes have water issues that should be evaluated holistically for grading, drainage and vapor control. We guide the process for the cleanest resolution.</li>
+      <li><strong>Failed septic inspections in rural Philomath and Lebanon.</strong> What's repairable vs. what requires a full system replacement.</li>
+      <li><strong>Roof concerns flagged by the inspector.</strong> When is it really at end of life vs. when can it survive another 5–10 years with targeted repair.</li>
+      <li><strong>Electrical and panel findings.</strong> What's a code update vs. what's a safety issue that lenders won't fund around.</li>
+      <li><strong>Mold or moisture in basements and attics.</strong> What actually needs a remediation specialist vs. what's a sealing-and-monitoring play.</li>
+    </ul>
+
+    <h2>How a pre-listing visit works</h2>
+    <ol>
+      <li><strong>You or your agent calls.</strong> 970.989.3064. I'll triage on the phone whether this needs a visit or whether I can give you the answer in three minutes.</li>
+      <li><strong>I come look.</strong> Within 24 hours when the deal clock is running. I bring the tools to actually diagnose, not just observe.</li>
+      <li><strong>I give you the real number.</strong> Same day, often same visit. What's actually wrong, what it actually costs to fix, what fraction of that you should fix vs. price for.</li>
+      <li><strong>Written assessment if needed.</strong> For negotiation, banking, or disclosure documentation. Flat fee scoped to the situation.</li>
+      <li><strong>Repairs if you want them.</strong> I'll take it on as your GC, oversee as Owner's Rep, or hand it off to the right specialist. Your call.</li>
+    </ol>
+
+    <h2>For agents reading this</h2>
+    <p>If you're a real estate professional handling a transaction that's about to go sideways over an inspection issue, call me before you call anyone else. Same-day responses for active deals. See the <a href="/for-realtors/">For Realtors</a> page for how the referral relationship works.</p>
+
+    <h2>Geography served</h2>
+    <p>Corvallis, Philomath, Albany, Lebanon, Independence, Monmouth, Dallas, Harrisburg. The entire 30-mile radius around the mid-Willamette Valley with no travel charge.</p>
+
+    <h2>Common questions</h2>
+    {faqs.map(({q, a}) => (
+      <>
+        <h3>{q}</h3>
+        <p>{a}</p>
+      </>
+    ))}
+
+    <div style="text-align:center; margin: 3rem 0;">
+      <a href="tel:+19709893064" class="btn">Call Marty, 970.989.3064</a>
+      <a href="/contact/?problem=pre-listing" class="btn btn--ghost" style="margin-left: .75rem;">Describe the finding</a>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(({q, a}) => ({
+      "@type": "Question",
+      "name": q,
+      "acceptedAnswer": { "@type": "Answer", "text": a }
+    }))
+  })} />
+</BaseLayout>

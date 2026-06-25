@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import oregonFinishedExterior from '../assets/oregon-house-finished-exterior.jpeg';
+import oregonBefore from '../assets/oregon-house-demolition-debris.jpeg';
+import oregonAfter from '../assets/oregon-house-patio-detail.jpeg';
+
+const problems = [
+  {
+    href: '/foundation-repair-corvallis/',
+    name: 'Foundations',
+    desc: 'Cracks. Settling. Walls that move.',
+    iconPath: 'M7 20h34v22H7zM7 31h34M18 20v11M30 31v11M24 20V9M19 13l5-5 5 5',
+  },
+  {
+    href: '/pre-listing-repairs/',
+    name: 'Water & Drainage',
+    desc: 'Wet basements. Bad grading. Runoff.',
+    iconPath: 'M24 7c0 0-10 12-10 20a10 10 0 0 0 20 0c0-8-10-20-10-20zM6 40q4-4 8 0t8 0t8 0t8 0',
+  },
+  {
+    href: '/contact/',
+    name: 'Structure',
+    desc: 'Framing, beams, and load problems.',
+    iconPath: 'M24 8L40 38L8 38zM24 8v30M16 23h16',
+  },
+  {
+    href: '/contact/',
+    name: 'Site Work',
+    desc: 'Grading, soil, and dirt work.',
+    iconPath: 'M5 38L18 24L28 32L43 14M43 14l-7 1M43 14l1 7',
+  },
+  {
+    href: '/contact/',
+    name: 'Restoration',
+    desc: 'Fix the damage. Bring it back.',
+    iconPath: 'M9 24L24 11L39 24M13 22V39H35V22M30 30a6 6 0 1 1-2-5M30 22v4h-4',
+  },
+  {
+    href: '/contact/',
+    name: 'Hazard Removal',
+    desc: 'Asbestos, lead, mold. Licensed pros only.',
+    iconPath: 'M24 8L42 39L6 39zM24 20v10',
+  },
+];
+
+const whyUs = [
+  { name: '40 Years', desc: 'Built high-end homes and resorts for four decades.' },
+  { name: 'No Crew of Our Own', desc: 'So we pick the best pro for YOU, not for us.' },
+  { name: 'You See Every Dollar', desc: 'Full money tracking. Clean bills and reports.' },
+  { name: 'Bid Translation', desc: 'We explain what each bid includes and why it is priced that way.' },
+];
+---
+<BaseLayout
+  title="Hard property problems, solved right. | ACRE"
+  description="Foundation cracks. Wet basements. Pre-listing repairs. ACRE is an independent construction advisor with 40 years of experience fixing exactly this. Serving Corvallis, Philomath, Albany, and the Willamette Valley."
+>
+  <section class="container hero hero--split">
+    <div class="hero__text">
+      <div class="eyebrow">Property Problem Specialists</div>
+      <h1>We fix hard property problems.</h1>
+      <p>A bad foundation. Water where it should not be. A house that is not safe to sell. We find the problem, tell you the real cost, and get it fixed right.</p>
+      <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="tel:+19709893064" class="btn">Call for same-day diagnostic</a>
+        <a href="/contact/" class="btn btn--ghost">Tell us what's wrong</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <Image
+        src={oregonFinishedExterior}
+        alt="Finished Philomath, Oregon home. White board-and-batten siding, dark standing-seam metal roof, cedar porch posts, permeable paver walkway, garden plants in pots on the porch. Address number 602 visible."
+        widths={[500, 800, 1200]}
+        sizes="(max-width: 900px) 100vw, 540px"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="trust-strip">
+      <div class="trust-strip__item"><span class="trust-strip__num">40</span>Years of Experience</div>
+      <div class="trust-strip__item"><span class="trust-strip__num">250993</span>OR CCB · Licensed &amp; Insured</div>
+      <div class="trust-strip__item"><span class="trust-strip__num">$0</span>To Look. Honest Diagnosis.</div>
+      <div class="trust-strip__item"><span class="trust-strip__num">541</span>Mid-Willamette Coverage</div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="label sans">Why You Should Hire Marty</div>
+    <div class="grid grid--4">
+      {whyUs.map(item => (
+        <div class="tile">
+          <div class="tile__name">{item.name}</div>
+          <div class="tile__desc">{item.desc}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="label sans">Problems We Fix</div>
+    <div class="grid grid--3">
+      {problems.map(p => (
+        <a href={p.href} class="tile">
+          <svg class="tile__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d={p.iconPath}/>
+          </svg>
+          <div class="tile__name">{p.name}</div>
+          <div class="tile__desc">{p.desc}</div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="label sans">How We Help</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step__num sans">01</div>
+        <svg class="step__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 24C12 14 36 14 43 24C36 34 12 34 5 24Z"/>
+          <circle cx="24" cy="24" r="6"/>
+        </svg>
+        <div class="step__name">Look</div>
+        <div class="step__desc">We come look. We tell you the truth.</div>
+      </div>
+      <div class="step">
+        <div class="step__num sans">02</div>
+        <svg class="step__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M25 6H40V21L22 39L7 24Z"/>
+          <circle cx="33" cy="14" r="2.5"/>
+        </svg>
+        <div class="step__name">Price It</div>
+        <div class="step__desc">You get a real number. No surprises.</div>
+      </div>
+      <div class="step">
+        <div class="step__num sans">03</div>
+        <svg class="step__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="24" cy="20" r="11"/>
+          <path d="M19 20l4 4l7-8"/>
+          <path d="M16 30L13 44L24 39L35 44L32 30"/>
+        </svg>
+        <div class="step__name">Find the Pro</div>
+        <div class="step__desc">We pick the right licensed pro for the job.</div>
+      </div>
+      <div class="step">
+        <div class="step__num sans">04</div>
+        <svg class="step__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="11" y="9" width="26" height="34" rx="2"/>
+          <path d="M19 9V6h10v3"/>
+          <path d="M16 20l3 3l5-5"/>
+          <path d="M16 31l3 3l5-5"/>
+        </svg>
+        <div class="step__name">Watch &amp; Report</div>
+        <div class="step__desc">We watch the work and keep clean records.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="label sans">Two Ways To Work With Us</div>
+    <div class="ways">
+      <div class="way">
+        <div class="way__tag">Owner's Rep</div>
+        <h3>We Guide You</h3>
+        <p>You stay in charge. You hire the pros. We plan the job, advise you, and watch the work. You see every dollar.</p>
+        <a href="/contact/?service=owners-rep" class="way__cta">Hire Marty as Owner's Rep →</a>
+      </div>
+      <div class="way">
+        <div class="way__tag">Your Builder · GC</div>
+        <h3>We Run It For You</h3>
+        <p>Want one person to own the whole job? We take it on as your builder. Licensed and insured.</p>
+        <a href="/contact/?service=gc" class="way__cta">Hire ACRE as your GC →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="before-after">
+      <div class="before-after__pair">
+        <div class="before-after__panel">
+          <span class="before-after__tag">Before</span>
+          <Image
+            src={oregonBefore}
+            alt="The Philomath property mid-demolition. Brown weathered siding, broken concrete and wood debris in a pile in the foreground, Republic Services dumpster, structural openings exposed."
+            widths={[400, 700, 1000]}
+            sizes="(max-width: 700px) 100vw, 590px"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="before-after__panel">
+          <span class="before-after__tag">After</span>
+          <Image
+            src={oregonAfter}
+            alt="The same Philomath property finished. Front porch with weathered Adirondack chairs, hanging basket of purple petunias and white lobelia in full bloom, garden plants in pots, watering can on the patio."
+            widths={[400, 700, 1000]}
+            sizes="(max-width: 700px) 100vw, 590px"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+      <div class="before-after__caption">
+        <span><b>Foundation Repair and Full Restoration.</b> Philomath, Oregon. From unsellable to a property the owners love.</span>
+        <span>ACRE</span>
+      </div>
+    </div>
+    <div class="band">
+      <div class="band__head">
+        <span class="band__label">For Real Estate Agents</span>
+        <h2>We help your deals close.</h2>
+      </div>
+      <ul>
+        <li>Fast, honest answers the moment a problem shows up.</li>
+        <li>Clean papers for buyers, banks, and inspectors.</li>
+        <li>One less deal that falls apart over a scary repair.</li>
+      </ul>
+      <a href="/for-realtors/" class="band__cta">Refer a deal →</a>
+    </div>
+  </section>
+</BaseLayout>

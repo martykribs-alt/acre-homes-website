@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import hillsideDrilling from '../assets/hillside-drilling-rig.jpeg';
+
+const faqs = [
+  {
+    q: "How do I know if a foundation crack is serious?",
+    a: "A hairline vertical crack in a poured concrete wall is almost always cosmetic and stable. A horizontal crack, a stair-step crack in block, a crack wider at one end, or any crack accompanied by sticking doors, sloping floors, or fresh wall cracks above it. That's a structural conversation. Don't try to diagnose it from a photo. Have someone look."
+  },
+  {
+    q: "What does foundation repair actually cost in the Corvallis area?",
+    a: "It depends entirely on the diagnosis. Cosmetic crack sealing on a stable foundation and full underpinning on a significantly settled one represent very different conversations. The number that matters is the number for YOUR foundation, which requires a visit and an honest assessment."
+  },
+  {
+    q: "Are foundation problems common in Corvallis and the Willamette Valley?",
+    a: "Yes, for a specific reason. Much of the valley sits on expansive clay soils that swell when wet and shrink when dry. Annual wet-dry cycles work foundations the way no one likes. Add hillside lots, marginal drainage, and 1970s-and-older concrete work, and most older Corvallis homes will eventually need some attention."
+  },
+  {
+    q: "Will a foundation problem kill my home sale?",
+    a: "Not if you handle it right. The wrong move is hiding it. The right move is getting a real assessment, a real cost number, and either fixing it or pricing the disclosure. Buyers don't walk away from foundation issues. They walk away from foundation issues without numbers."
+  },
+  {
+    q: "Why start with an independent advisor?",
+    a: "Foundation specialists are experts at fixing what's in front of them. An independent advisor's job is to confirm whether foundation work is the right scope in the first place, what that scope actually is, and which specialist is the best match for your specific situation. The diagnostic visit is the cheapest insurance you can buy, and a clean handoff is better for everyone in the relationship, including the specialist who ends up doing the work."
+  }
+];
+---
+<BaseLayout
+  title="Foundation Repair in Corvallis, Oregon"
+  description="Foundation cracks, settling, or wall movement at your Corvallis home? Get an independent diagnosis from a 40-year licensed contractor. Honest assessment, clear recommendations, the right next step for your specific situation."
+>
+  <section class="container hero">
+    <div class="eyebrow">Corvallis, Oregon</div>
+    <h1>Foundation repair in Corvallis. Get a straight answer first.</h1>
+    <p>Cracks, settling, sloping floors, doors that won't latch right. Before you spend a dollar on piering or wall straps, get an independent diagnosis from someone who doesn't sell those services. I'll tell you what's actually wrong, what it actually costs, and who's the right pro to fix it.</p>
+    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="tel:+19709893064" class="btn">Call for same-day diagnostic</a>
+      <a href="/contact/?problem=foundation" class="btn btn--ghost">Describe what's going on</a>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="lp-hero">
+      <Image
+        src={hillsideDrilling}
+        alt="Drilling rig from B&Y Drilling working on a cut hillside, installing rock anchors or micropiles. Steel guide rods staged in the foreground."
+        widths={[600, 1000, 1400]}
+        sizes="(max-width: 900px) 100vw, 1180px"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  </section>
+
+  <section class="container container--narrow prose">
+    <h2>What I look for</h2>
+    <p class="lede">A foundation problem isn't one problem. It's a family of problems with very different fixes and very different price tags. The visit is about figuring out which one you have.</p>
+    <ul>
+      <li><strong>Settling vs. heaving.</strong> Is the foundation going down (settling, often expansive soil or undersized footings) or being pushed up (heaving, often frost or wet clay)? They look similar from inside and require opposite fixes.</li>
+      <li><strong>Active vs. stable.</strong> Has the movement stopped, or is it still happening? Stable cracks get monitored. Active cracks get fixed.</li>
+      <li><strong>Wall vs. footing.</strong> Is the wall failing in shear (bowing inward from soil pressure) or is the footing failing in bearing (sinking)? Different problem, different fix, different cost.</li>
+      <li><strong>Cause vs. symptom.</strong> Is the crack the problem, or is the crack the visible symptom of a drainage problem twenty feet from the house? Fixing the symptom without fixing the cause is the most expensive mistake homeowners make.</li>
+    </ul>
+
+    <h2>Common Corvallis foundation situations</h2>
+    <h3>1970s slab-on-grade homes with hairline cracks</h3>
+    <p>Almost always cosmetic. Worth confirming with a diagnostic visit before considering significant repair work. Often the right move is a simple monitoring approach with a date-stamped photo and an inexpensive crack monitor from the hardware store.</p>
+
+    <h3>Hillside homes with sloping floors</h3>
+    <p>The Corvallis hills hide a lot of homes built on questionable cuts and fills from the 1960s–80s. Sloping floors are real, and the right fix might be piering, might be wall reinforcement, might be drainage correction. The cost difference between those three approaches is significant. Get the diagnosis right.</p>
+
+    <h3>Block foundations with stair-step cracking</h3>
+    <p>Older Corvallis homes with concrete block foundations show stair-step cracks at the corners when soil pressure or settling stresses the wall. This is real and shouldn't be ignored. Solutions range from carbon-fiber straps for minor cases to full rebuild with piering for severe ones. The right answer depends entirely on the assessment.</p>
+
+    <h3>Wet basement plus foundation cracks</h3>
+    <p>If you have both, fix the water first. Almost always. A dry foundation will tolerate a hairline crack indefinitely. A wet one will turn it into a structural issue. Don't let anyone sell you foundation work without first solving the water.</p>
+
+    <h2>How my visit works</h2>
+    <ol>
+      <li><strong>You call.</strong> 970.989.3064. Tell me what you're seeing. I'll ask a few questions to make sure I bring the right tools.</li>
+      <li><strong>I come look.</strong> Usually within 24 hours, often same-day. I look at the foundation, the drainage, the framing above it, and the soil around the house. The visit takes about an hour.</li>
+      <li><strong>I tell you.</strong> Same day, in plain language. What's wrong, how serious it is, what to do about it, and a realistic cost band.</li>
+      <li><strong>You decide.</strong> If you want a written assessment for insurance, banking, or a real estate transaction, I produce that. If you want me to oversee the work as Owner's Rep, I do that. If you want me to take it on as your GC, I do that. If you want to take what you've learned and run with it yourself, that's fine too.</li>
+    </ol>
+
+    <h2>Geography served</h2>
+    <p>Corvallis is home base. I cover Philomath, Albany, Lebanon, Independence, Monmouth, Dallas, and Harrisburg without a travel charge. Outside that, ask.</p>
+
+    <h2>Common questions</h2>
+    {faqs.map(({q, a}) => (
+      <>
+        <h3>{q}</h3>
+        <p>{a}</p>
+      </>
+    ))}
+
+    <div style="text-align:center; margin: 3rem 0;">
+      <a href="tel:+19709893064" class="btn">Call Marty, 970.989.3064</a>
+      <a href="/contact/?problem=foundation" class="btn btn--ghost" style="margin-left: .75rem;">Describe the problem</a>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(({q, a}) => ({
+      "@type": "Question",
+      "name": q,
+      "acceptedAnswer": { "@type": "Answer", "text": a }
+    }))
+  })} />
+</BaseLayout>

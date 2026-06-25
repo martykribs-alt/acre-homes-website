@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Same-Day Diagnostic | Contact ACRE"
+  description="Call Marty for a same-day property diagnostic. Foundation, drainage, structural, pre-listing repair, or hazardous material concerns. Serving Corvallis, Philomath, Albany, Lebanon, and the Willamette Valley."
+>
+  <section class="container hero">
+    <div class="eyebrow">Same-Day Diagnostic</div>
+    <h1>Tell us what's wrong.</h1>
+    <p>The fastest way to a real answer is to pick up the phone. If it's after hours or you'd rather type, the form below gets to me within minutes.</p>
+  </section>
+
+  <section class="container container--narrow">
+    <div class="ways" style="margin-bottom: 3rem;">
+      <div class="way">
+        <div class="way__tag">Fastest</div>
+        <h3>Call directly</h3>
+        <p>Daytime weekdays I usually pick up on the second ring. After hours I return calls within the same business day.</p>
+        <a href="tel:+19709893064" class="way__cta">970.989.3064 →</a>
+      </div>
+      <div class="way">
+        <div class="way__tag">After hours or detailed</div>
+        <h3>Send a note</h3>
+        <p>For complicated situations, photos, or after-hours inquiries, the form below is the right move. I read every submission personally.</p>
+        <a href="#contact-form" class="way__cta">Use the form →</a>
+      </div>
+    </div>
+
+    <h2 id="contact-form">Tell me what's going on</h2>
+    <form
+      class="form"
+      name="diagnostic-request"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+      <input type="hidden" name="form-name" value="diagnostic-request" />
+      <p class="hidden">
+        <label>Don't fill this out <input name="bot-field" /></label>
+      </p>
+
+      <div class="field">
+        <label for="name">Your name</label>
+        <input id="name" name="name" type="text" required autocomplete="name" />
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" type="tel" required autocomplete="tel" />
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" />
+      </div>
+
+      <div class="field">
+        <label for="address">Property address</label>
+        <input id="address" name="address" type="text" required autocomplete="street-address" placeholder="Street, City, OR" />
+      </div>
+
+      <div class="field">
+        <label for="problem-type">What's the problem?</label>
+        <select id="problem-type" name="problem-type" required>
+          <option value="">Choose one</option>
+          <option>Foundation crack or settling</option>
+          <option>Wet basement or drainage</option>
+          <option>Structural concern</option>
+          <option>Pre-listing inspection repair</option>
+          <option>Mold, asbestos, or hazardous material</option>
+          <option>Failed inspection / system</option>
+          <option>Site / grading / retaining wall</option>
+          <option>Other / not sure</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="urgency">How urgent?</label>
+        <select id="urgency" name="urgency" required>
+          <option value="">Choose one</option>
+          <option>Emergency, safety concern</option>
+          <option>This week, deal at risk</option>
+          <option>Next two weeks</option>
+          <option>Just gathering information</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="role">Are you the…</label>
+        <select id="role" name="role">
+          <option value="">Choose one</option>
+          <option>Homeowner</option>
+          <option>Real estate agent</option>
+          <option>Buyer in escrow</option>
+          <option>Seller preparing to list</option>
+          <option>Property manager</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message">Describe what's going on</label>
+        <textarea id="message" name="message" required placeholder="Inspection report findings, what you've noticed, when it started, anything a contractor told you so far..."></textarea>
+      </div>
+
+      <button type="submit" class="btn" style="justify-self: start;">Send to Marty</button>
+    </form>
+
+    <h2 style="margin-top: 4rem;">Frequently Asked</h2>
+    <h3>What does it cost to have you come look?</h3>
+    <p>A first diagnostic visit is free within my normal service radius (Corvallis, Philomath, Albany, Lebanon, Independence, Monmouth, Dallas, Harrisburg). Beyond that, I'll quote a travel fee before the visit.</p>
+
+    <h3>How fast can you actually get there?</h3>
+    <p>Within 24 hours for most weekday calls. Same-day for emergencies and deal-saving situations.</p>
+
+    <h3>Do you do the work yourself?</h3>
+    <p>I'm a licensed general contractor and I can take on the project under <strong>Aspen Custom Ranch Enterprises, LLC</strong>. But I don't have an in-house crew, which means I source the right specialist for your specific problem rather than fitting your problem to my crew's calendar. Many clients hire me as Owner's Rep instead, where they retain their own contractors and I oversee the work.</p>
+
+    <h3>What if the problem isn't actually that bad?</h3>
+    <p>Then I tell you it isn't that bad. I'd rather lose the work and earn the referral than oversell a fix you don't need.</p>
+
+    <h3>What if it IS that bad?</h3>
+    <p>Then we talk about how bad, how much, and what your options are. I will not hide the real number to make the conversation easier.</p>
+  </section>
+</BaseLayout>

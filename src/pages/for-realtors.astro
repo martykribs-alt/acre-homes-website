@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import aspenCisternPour from '../assets/aspen-cistern-formwork-pour.jpeg';
+---
+<BaseLayout
+  title="For Real Estate Agents | ACRE"
+  description="When an inspection scares your buyer, when a foundation issue threatens your listing, when a structural worry could kill the deal, call Marty before you call anyone else. Fast diagnosis. Honest answers. Clean paperwork."
+>
+  <section class="container hero">
+    <div class="eyebrow">For Real Estate Agents</div>
+    <h1>We help your deals close.</h1>
+    <p>An inspection turned up something scary. The buyer is spooked. The listing is suddenly at risk. Call me before you call anyone else. I'll give you fast, honest answers, and the paperwork buyers, banks, and inspectors actually trust.</p>
+    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="tel:+19709893064" class="btn">Call Marty, 970.989.3064</a>
+      <a href="/contact/?source=agent" class="btn btn--ghost">Refer a deal</a>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="feature">
+      <div class="feature__frame">
+        <Image
+          src={aspenCisternPour}
+          alt="Crane truck pouring concrete into circular formwork for a property water cistern, mountain landscape backdrop."
+          widths={[600, 1000, 1400]}
+          sizes="(max-width: 900px) 100vw, 1180px"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="feature__caption">
+          <span><b>The contractor you're referring your client to.</b> Property-scale civil work, Aspen.</span>
+          <span>ACRE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container container--narrow prose">
+    <h2>Why agents refer to ACRE</h2>
+    <p class="lede">Most contractors don't understand a transaction timeline. I do. I've been on the other side of a closing where one structural question killed a deal that didn't need to die. My whole approach is built around protecting your closing.</p>
+
+    <h3>Same-day diagnostic visits</h3>
+    <p>When something shows up on an inspection report and the clock is ticking, I'll be at the property within 24 hours wherever I can. I'll tell your client what's actually wrong, what it actually costs to fix, and whether the seller's price reflects it. That's often the only conversation a deal needs to survive.</p>
+
+    <h3>Paperwork buyers and banks will accept</h3>
+    <p>A scary inspection finding without a credible cost estimate is a deal-killer. The same finding paired with a written assessment from a licensed general contractor, an itemized scope of work, and a real number is a negotiation. I produce the document that turns the first into the second.</p>
+
+    <h3>I'm not trying to win the rebuild work</h3>
+    <p>I have no in-house crew. My recommendations are scoped to what your client's situation actually needs, not what my schedule needs me to win. The recommendation I give you is the same recommendation I would give my own family.</p>
+
+    <h3>Clean handoff if the deal closes</h3>
+    <p>If your buyer takes possession and wants the work done, I'll either advise them as an Owner's Representative or take it on as their licensed general contractor. Either way, your client comes out of the transaction with a relationship to a credible builder, and you come out with a closed deal and a referral source.</p>
+
+    <h2>Common situations I get called on</h2>
+    <ul>
+      <li><strong>Foundation crack or settling found at inspection.</strong> Is this cosmetic, monitorable, or expensive? I'll tell you which.</li>
+      <li><strong>Wet basement or drainage finding.</strong> What's the source, what's the fix, what's the realistic number?</li>
+      <li><strong>Structural concern flagged by an inspector.</strong> Is it really a load issue, or is the inspector being conservative?</li>
+      <li><strong>Pre-listing concerns from the seller.</strong> What should we fix before going on market, and what should we disclose and price for?</li>
+      <li><strong>Mold, asbestos, or hazardous material findings.</strong> What gets the right licensed remediation pro, and what's the cost band?</li>
+      <li><strong>Failed septic, well, or system inspections.</strong> What does the buyer actually need to walk in with eyes open?</li>
+    </ul>
+
+    <h2>How to refer</h2>
+    <p>Easiest path. Text me at <strong>970.989.3064</strong> with the property address and a one-line summary. I'll call your client back within the hour during business hours. If you want a CC on the diagnostic, just say so and I'll loop you in.</p>
+    <p>Email works too. <a href="mailto:marty@acre.homes">marty@acre.homes</a></p>
+
+    <h2>Referral acknowledgement</h2>
+    <p>I don't pay finder's fees. That's not the relationship I want with your brokerage. What I do is make sure you look good in front of your client every time. Agents who refer me reliably get same-day prioritization and direct line access for as long as we're working together.</p>
+
+    <div style="text-align:center; margin: 3rem 0;">
+      <a href="tel:+19709893064" class="btn">Call Marty, 970.989.3064</a>
+      <a href="mailto:marty@acre.homes" class="btn btn--ghost" style="margin-left: .75rem;">Email Marty</a>
+    </div>
+  </section>
+</BaseLayout>

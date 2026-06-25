@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ACRE, Review Copy</title>
+<style>
+:root{
+  --chocolate:#553E3B; --chocolate-soft:#7A5F58; --brown:#A16C4D;
+  --cream:#F6F1EA; --cream-deep:#E8E0D4; --card:#FCFAF6;
+  --rule:#C9BEB1; --ink:#2A2118;
+  --font-serif:"Iowan Old Style","Hoefler Text","Garamond","Times New Roman",serif;
+  --font-sans:"Helvetica Neue","Inter","Arial",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+img,svg{display:block;max-width:100%;height:auto}
+a{color:inherit}
+body{background:var(--cream-deep);color:var(--ink);font-family:var(--font-serif);font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+.sans{font-family:var(--font-sans)}
+.eyebrow{font-family:var(--font-sans);font-size:0.75rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--brown);font-weight:600}
+.label{font-family:var(--font-sans);font-size:0.8125rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--chocolate);font-weight:600;display:flex;align-items:center;gap:0.75rem;margin:3rem 0 1.5rem}
+.label::after{content:'';flex:1;height:1px;background:var(--rule)}
+h1,h2,h3,h4{font-family:var(--font-serif);font-weight:600;color:var(--chocolate);margin:0 0 1rem;letter-spacing:-0.01em}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.05}
+h2{font-size:clamp(1.625rem,3.5vw,2.25rem);line-height:1.15}
+h3{font-size:clamp(1.25rem,2.5vw,1.5rem);line-height:1.25}
+p{margin:0 0 1rem}
+a{color:var(--brown);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--chocolate)}
+.container{width:100%;max-width:1180px;margin:0 auto;padding:0 1.5rem}
+.container--narrow{max-width:820px}
+.page-wrap{background:var(--cream)}
+
+/* Preview tabs */
+.preview-banner{background:var(--brown);color:var(--cream);padding:0.5rem 1.5rem;font-family:var(--font-sans);font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;text-align:center;font-weight:700}
+.preview-tabs{background:var(--ink);color:var(--cream);padding:0;position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap}
+.preview-tabs__inner{max-width:1180px;margin:0 auto;padding:0 1.5rem;display:flex;gap:0}
+.preview-tab{background:transparent;color:rgba(246,241,234,0.7);border:none;padding:0.85rem 1.1rem;font-family:var(--font-sans);font-size:0.8125rem;letter-spacing:0.05em;cursor:pointer;border-bottom:3px solid transparent;font-weight:500}
+.preview-tab:hover{color:var(--cream)}
+.preview-tab.active{color:var(--cream);border-bottom-color:var(--brown);font-weight:700}
+
+/* Page sections */
+.page{display:none}
+.page.active{display:block}
+
+/* Header */
+.site-header{background:var(--cream);border-bottom:2px solid var(--chocolate)}
+.site-header__inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1rem 0;position:relative}
+.site-header__inner::after{content:'';position:absolute;left:1.5rem;bottom:-2px;width:90px;height:2px;background:var(--brown)}
+.site-logo{display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--chocolate)}
+.site-logo__img{display:block;height:84px;width:auto;object-fit:contain}
+.site-logo__sub{font-family:var(--font-sans);font-size:0.6875rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--brown);line-height:1.2;max-width:8em}
+@media (max-width:540px){.site-logo__img{height:66px}}
+.site-nav{display:flex;align-items:center;gap:1.5rem}
+.site-nav a{font-family:var(--font-sans);font-size:0.875rem;letter-spacing:0.04em;color:var(--ink);text-decoration:none;font-weight:500}
+.site-nav a:hover{color:var(--brown)}
+.site-nav__phone{background:var(--chocolate);color:var(--cream)!important;padding:0.5rem 1rem;border-radius:4px;font-weight:600}
+.site-nav__phone:hover{background:var(--brown);color:var(--cream)!important}
+@media (max-width:768px){.site-nav{gap:0.75rem}.site-nav__link{display:none}.site-logo__sub{display:none}}
+
+/* Sticky phone CTA */
+.phone-cta{position:fixed;bottom:1.5rem;right:1.5rem;z-index:60;background:var(--chocolate);color:var(--cream);padding:0.75rem 1.5rem;border-radius:999px;box-shadow:0 6px 24px rgba(85,62,59,0.32);text-decoration:none;font-family:var(--font-sans);font-weight:700;font-size:0.95rem;display:inline-flex;align-items:center;gap:0.5rem}
+.phone-cta:hover{background:var(--brown);transform:translateY(-2px);color:var(--cream)}
+.phone-cta__icon{width:18px;height:18px}
+
+/* Hero */
+.hero{padding:4rem 0 2rem}
+.hero h1{margin-bottom:1.5rem}
+.hero p{font-size:clamp(1.0625rem,1.5vw,1.25rem);line-height:1.5;max-width:38em;color:var(--ink)}
+.hero--split{display:grid;grid-template-columns:1.05fr 0.95fr;gap:3rem;align-items:center}
+@media (max-width:900px){.hero--split{grid-template-columns:1fr;gap:1.5rem}}
+.hero__text{min-width:0}
+.hero__image{border-radius:4px;overflow:hidden;border:1px solid var(--rule);background:var(--card);box-shadow:0 8px 32px rgba(85,62,59,0.12)}
+.hero__image img{display:block;width:100%;height:auto;max-height:520px;object-fit:cover}
+
+/* Trust strip */
+.trust-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:1rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:2rem}
+.trust-strip__item{font-family:var(--font-sans);font-size:0.8125rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--chocolate-soft);text-align:center;font-weight:600}
+.trust-strip__num{display:block;font-family:var(--font-serif);font-size:1.5rem;color:var(--chocolate);letter-spacing:0;text-transform:none;font-weight:700;margin-bottom:2px}
+@media (max-width:700px){.trust-strip{grid-template-columns:repeat(2,1fr)}}
+
+/* Grids */
+.grid{display:grid;gap:1rem}
+.grid--3{grid-template-columns:repeat(3,1fr)}
+.grid--4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:900px){.grid--4,.grid--3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:540px){.grid--4,.grid--3{grid-template-columns:1fr}}
+.tile{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:1.5rem;text-decoration:none;color:var(--ink);display:block}
+.tile__icon{width:40px;height:40px;color:var(--brown);margin-bottom:0.75rem}
+.tile__name{font-family:var(--font-sans);font-weight:700;font-size:1rem;color:var(--chocolate);margin-bottom:0.25rem}
+.tile__desc{font-size:0.9375rem;line-height:1.4;color:var(--ink)}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:540px){.steps{grid-template-columns:1fr}}
+.step{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:1rem}
+.step__num{font-family:var(--font-sans);font-weight:700;font-size:0.75rem;color:var(--brown);letter-spacing:0.1em}
+.step__icon{width:36px;height:36px;color:var(--chocolate);margin:0.5rem 0 0.5rem}
+.step__name{font-family:var(--font-sans);font-weight:700;font-size:1rem;color:var(--chocolate);margin-bottom:0.25rem}
+.step__desc{font-size:0.9375rem;line-height:1.4}
+
+/* Ways */
+.ways{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+@media (max-width:700px){.ways{grid-template-columns:1fr}}
+.way{border:1.5px solid var(--chocolate);border-radius:4px;padding:1.5rem 1.5rem 2rem;background:var(--card);display:flex;flex-direction:column}
+.way__tag{font-family:var(--font-sans);font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--brown);font-weight:700;margin-bottom:0.5rem}
+.way h3{font-size:1.5rem;margin-bottom:0.75rem}
+.way p{margin-bottom:1rem}
+.way__cta{align-self:flex-start;background:var(--chocolate);color:var(--cream);text-decoration:none;padding:0.5rem 1rem;border-radius:4px;font-family:var(--font-sans);font-size:0.875rem;font-weight:600;margin-top:auto}
+
+/* Realtor band */
+.band{background:var(--chocolate);color:var(--cream);border-radius:4px;padding:2rem;margin:3rem 0}
+.band__head{display:flex;align-items:baseline;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.band__label{font-family:var(--font-sans);font-size:0.75rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--brown);font-weight:700}
+.band h2{font-size:1.875rem;margin:0;color:var(--cream)}
+.band ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media (max-width:700px){.band ul{grid-template-columns:1fr}}
+.band li{font-size:1rem;line-height:1.4;padding-left:1.25rem;position:relative}
+.band li::before{content:'';position:absolute;left:0;top:6px;width:10px;height:10px;border:2px solid var(--brown);border-right:none;border-bottom:none}
+.band__cta{display:inline-block;margin-top:1.5rem;background:var(--cream);color:var(--chocolate);text-decoration:none;padding:0.75rem 1.5rem;border-radius:4px;font-family:var(--font-sans);font-weight:700;font-size:0.9375rem}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:0.5rem;background:var(--chocolate);color:var(--cream);text-decoration:none;padding:0.75rem 1.5rem;border-radius:4px;font-family:var(--font-sans);font-weight:700;font-size:0.9375rem;border:none}
+.btn--ghost{background:transparent;color:var(--chocolate);border:1.5px solid var(--chocolate)}
+
+/* Image features */
+.feature{margin:3rem 0}
+.feature__frame{background:var(--card);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.feature__frame img{display:block;width:100%;height:auto;max-height:540px;object-fit:cover}
+.feature__caption{padding:0.75rem 1.5rem 1rem;font-family:var(--font-sans);font-size:0.875rem;letter-spacing:0.04em;color:var(--chocolate-soft);border-top:1px solid var(--rule);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.feature__caption b{color:var(--chocolate);font-weight:700}
+
+/* Before / After */
+.before-after{margin:3rem 0;background:var(--card);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.before-after__pair{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule)}
+@media (max-width:700px){.before-after__pair{grid-template-columns:1fr}}
+.before-after__panel{background:var(--card);position:relative}
+.before-after__panel img{display:block;width:100%;height:100%;max-height:420px;object-fit:cover}
+.before-after__tag{position:absolute;top:0.75rem;left:0.75rem;background:var(--chocolate);color:var(--cream);font-family:var(--font-sans);font-size:0.6875rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;padding:0.35rem 0.7rem;border-radius:3px}
+.before-after__caption{padding:0.75rem 1.5rem 1rem;font-family:var(--font-sans);font-size:0.875rem;letter-spacing:0.04em;color:var(--chocolate-soft);border-top:1px solid var(--rule);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.before-after__caption b{color:var(--chocolate);font-weight:700}
+
+/* LP hero image */
+.lp-hero{margin:1.5rem 0 3rem;border-radius:4px;overflow:hidden;border:1px solid var(--rule)}
+.lp-hero img{display:block;width:100%;height:auto;max-height:480px;object-fit:cover}
+
+/* Gallery */
+.gallery{margin:1.5rem 0 3rem}
+.gallery__row{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:1rem}
+@media (max-width:800px){.gallery__row{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.gallery__row{grid-template-columns:1fr}}
+.gallery__item{background:var(--card);border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.gallery__item img{display:block;width:100%;height:220px;object-fit:cover}
+.gallery__caption{padding:0.75rem 1rem;font-family:var(--font-sans);font-size:0.8125rem;color:var(--chocolate-soft);line-height:1.4}
+.gallery__caption b{display:block;color:var(--chocolate);font-weight:700;margin-bottom:2px}
+.gallery__heading{font-family:var(--font-sans);font-size:0.75rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--brown);font-weight:700;margin:1.5rem 0 0.75rem}
+
+/* Inset portrait */
+.inset-portrait{max-width:360px;margin:1.5rem auto 2rem;background:var(--card);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.inset-portrait img{display:block;width:100%;height:auto}
+.inset-portrait__caption{padding:0.75rem 1rem;font-family:var(--font-sans);font-size:0.8125rem;color:var(--chocolate-soft);text-align:center;line-height:1.4}
+.inset-portrait__caption b{display:block;color:var(--chocolate);font-weight:700;margin-bottom:2px}
+
+/* Long-form prose */
+.prose{font-size:1.0625rem;line-height:1.65}
+.prose h2{margin-top:3rem}
+.prose h3{margin-top:1.5rem}
+.prose ul,.prose ol{margin:0 0 1.5rem;padding-left:1.5rem}
+.prose li{margin-bottom:0.5rem}
+.prose .lede{font-size:1.25rem;line-height:1.5;color:var(--chocolate);margin-bottom:2rem}
+
+/* Footer */
+.site-footer{background:var(--chocolate);color:var(--cream);padding:3rem 0 1.5rem;margin-top:4rem}
+.site-footer a{color:var(--cream)}
+.site-footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+@media (max-width:800px){.site-footer__grid{grid-template-columns:1fr;gap:1.5rem}}
+.site-footer__brand h3{color:var(--cream);margin-bottom:0.5rem}
+.site-footer__brand p{color:var(--cream);opacity:0.85;margin-bottom:0.5rem;font-size:0.9375rem}
+.site-footer__col h4{font-family:var(--font-sans);font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brown);margin-bottom:0.75rem}
+.site-footer__col p{margin-bottom:0.5rem;font-size:0.9375rem}
+.site-footer__legal{border-top:1px solid rgba(246,241,234,0.18);padding-top:1rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;font-family:var(--font-sans);font-size:0.75rem;color:var(--cream);opacity:0.7}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">Review Copy &middot; acre.homes &middot; v1 with images &middot; Not yet live</div>
+
+<nav class="preview-tabs" aria-label="Preview navigation">
+  <div class="preview-tabs__inner">
+    <button class="preview-tab active" data-tab="home">Homepage</button>
+    <button class="preview-tab" data-tab="about">About Marty</button>
+    <button class="preview-tab" data-tab="for-realtors">For Realtors</button>
+    <button class="preview-tab" data-tab="foundation">Foundation Repair LP</button>
+    <button class="preview-tab" data-tab="prelisting">Pre-Listing Repairs LP</button>
+  </div>
+</nav>
+
+<!-- =================== HOMEPAGE =================== -->
+<section class="page active" id="home">
+  <div class="page-wrap">
+    <header class="site-header"><div class="container"><div class="site-header__inner">
+      <a href="#" class="site-logo"><img src="./public/ACRE-logo.png" alt="ACRE" class="site-logo__img"><span class="site-logo__sub">Property Problem Specialists</span></a>
+      <nav class="site-nav">
+        <a href="#" data-go="about" class="site-nav__link">About Marty</a>
+        <a href="#" data-go="for-realtors" class="site-nav__link">For Realtors</a>
+        <a href="#" class="site-nav__link">Contact</a>
+        <a href="tel:+19709893064" class="site-nav__phone">Call 970.989.3064</a>
+      </nav>
+    </div></div></header>
+
+    <main>
+      <section class="container hero hero--split">
+        <div class="hero__text">
+          <div class="eyebrow">Property Problem Specialists</div>
+          <h1>We fix hard property problems.</h1>
+          <p>A bad foundation. Water where it should not be. A house that is not safe to sell. We find the problem, tell you the real cost, and get it fixed right.</p>
+          <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+            <a href="tel:+19709893064" class="btn">Call for same-day diagnostic</a>
+            <a href="#" class="btn btn--ghost">Tell us what's wrong</a>
+          </div>
+        </div>
+        <div class="hero__image">
+          <img src="./src/assets/oregon-house-finished-exterior.jpeg" alt="Finished Philomath home #602">
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="trust-strip">
+          <div class="trust-strip__item"><span class="trust-strip__num">40</span>Years of Experience</div>
+          <div class="trust-strip__item"><span class="trust-strip__num">250993</span>OR CCB &middot; Licensed &amp; Insured</div>
+          <div class="trust-strip__item"><span class="trust-strip__num">$0</span>To Look. Honest Diagnosis.</div>
+          <div class="trust-strip__item"><span class="trust-strip__num">541</span>Mid-Willamette Coverage</div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="label sans">Why You Should Hire Marty</div>
+        <div class="grid grid--4">
+          <div class="tile"><div class="tile__name">40 Years</div><div class="tile__desc">Built high-end homes and resorts for four decades.</div></div>
+          <div class="tile"><div class="tile__name">No Crew of Our Own</div><div class="tile__desc">So we pick the best pro for YOU, not for us.</div></div>
+          <div class="tile"><div class="tile__name">You See Every Dollar</div><div class="tile__desc">Full money tracking. Clean bills and reports.</div></div>
+          <div class="tile"><div class="tile__name">Bid Translation</div><div class="tile__desc">We explain what each bid includes and why it is priced that way.</div></div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="label sans">Problems We Fix</div>
+        <div class="grid grid--3">
+          <a href="#" data-go="foundation" class="tile"><svg class="tile__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="20" width="34" height="22"/><line x1="7" y1="31" x2="41" y2="31"/><line x1="18" y1="20" x2="18" y2="31"/><line x1="30" y1="31" x2="30" y2="42"/><path d="M24 20 L24 9 M19 13 l5 -5 l5 5"/></svg><div class="tile__name">Foundations</div><div class="tile__desc">Cracks. Settling. Walls that move.</div></a>
+          <a href="#" data-go="prelisting" class="tile"><svg class="tile__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 7 C24 7 14 19 14 27 a10 10 0 0 0 20 0 C34 19 24 7 24 7 Z"/><path d="M6 40 q4 -4 8 0 t8 0 t8 0 t8 0"/></svg><div class="tile__name">Water &amp; Drainage</div><div class="tile__desc">Wet basements. Bad grading. Runoff.</div></a>
+          <a href="#" class="tile"><svg class="tile__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 8 L40 38 L8 38 Z"/><line x1="24" y1="8" x2="24" y2="38"/><line x1="16" y1="23" x2="32" y2="23"/></svg><div class="tile__name">Structure</div><div class="tile__desc">Framing, beams, and load problems.</div></a>
+          <a href="#" class="tile"><svg class="tile__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 38 L18 24 L28 32 L43 14"/><path d="M43 14 l-7 1 M43 14 l1 7"/><line x1="5" y1="43" x2="43" y2="43" stroke-dasharray="2 3"/></svg><div class="tile__name">Site Work</div><div class="tile__desc">Grading, soil, and dirt work.</div></a>
+          <a href="#" class="tile"><svg class="tile__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 24 L24 11 L39 24"/><path d="M13 22 V39 H35 V22"/><path d="M30 30 a6 6 0 1 1 -2 -5 M30 22 v4 h-4"/></svg><div class="tile__name">Restoration</div><div class="tile__desc">Fix the damage. Bring it back.</div></a>
+          <a href="#" class="tile"><svg class="tile__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 8 L42 39 L6 39 Z"/><line x1="24" y1="20" x2="24" y2="30"/></svg><div class="tile__name">Hazard Removal</div><div class="tile__desc">Asbestos, lead, mold. Licensed pros only.</div></a>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="label sans">How We Help</div>
+        <div class="steps">
+          <div class="step"><div class="step__num sans">01</div><svg class="step__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 24 C12 14 36 14 43 24 C36 34 12 34 5 24 Z"/><circle cx="24" cy="24" r="6"/></svg><div class="step__name">Look</div><div class="step__desc">We come look. We tell you the truth.</div></div>
+          <div class="step"><div class="step__num sans">02</div><svg class="step__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M25 6 H40 V21 L22 39 L7 24 Z"/><circle cx="33" cy="14" r="2.5"/></svg><div class="step__name">Price It</div><div class="step__desc">You get a real number. No surprises.</div></div>
+          <div class="step"><div class="step__num sans">03</div><svg class="step__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="20" r="11"/><path d="M19 20 l4 4 l7 -8"/><path d="M16 30 L13 44 L24 39 L35 44 L32 30"/></svg><div class="step__name">Find the Pro</div><div class="step__desc">We pick the right licensed pro for the job.</div></div>
+          <div class="step"><div class="step__num sans">04</div><svg class="step__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="11" y="9" width="26" height="34" rx="2"/><path d="M19 9 V6 h10 v3"/><path d="M16 20 l3 3 l5 -5"/><path d="M16 31 l3 3 l5 -5"/></svg><div class="step__name">Watch &amp; Report</div><div class="step__desc">We watch the work and keep clean records.</div></div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="label sans">Two Ways To Work With Us</div>
+        <div class="ways">
+          <div class="way"><div class="way__tag">Owner's Rep</div><h3>We Guide You</h3><p>You stay in charge. You hire the pros. We plan the job, advise you, and watch the work. You see every dollar.</p><a href="#" class="way__cta">Hire Marty as Owner's Rep &rarr;</a></div>
+          <div class="way"><div class="way__tag">Your Builder &middot; GC</div><h3>We Run It For You</h3><p>Want one person to own the whole job? We take it on as your builder. Licensed and insured.</p><a href="#" class="way__cta">Hire ACRE as your GC &rarr;</a></div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="before-after">
+          <div class="before-after__pair">
+            <div class="before-after__panel"><span class="before-after__tag">Before</span><img src="./src/assets/oregon-house-demolition-debris.jpeg" alt="Philomath house mid-demolition with debris pile and dumpster"></div>
+            <div class="before-after__panel"><span class="before-after__tag">After</span><img src="./src/assets/oregon-house-patio-detail.jpeg" alt="Same Philomath house porch with chairs, hanging basket in bloom, plants"></div>
+          </div>
+          <div class="before-after__caption">
+            <span><b>Foundation Repair and Full Restoration.</b> Philomath, Oregon. From unsellable to a property the owners love.</span>
+            <span>ACRE</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="band">
+          <div class="band__head"><span class="band__label">For Real Estate Agents</span><h2>We help your deals close.</h2></div>
+          <ul>
+            <li>Fast, honest answers the moment a problem shows up.</li>
+            <li>Clean papers for buyers, banks, and inspectors.</li>
+            <li>One less deal that falls apart over a scary repair.</li>
+          </ul>
+          <a href="#" data-go="for-realtors" class="band__cta">Refer a deal &rarr;</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container"><div class="site-footer__grid">
+      <div class="site-footer__brand"><h3>ACRE, Aspen Custom Ranch Enterprises, LLC</h3><p>Property Problem Specialists. Independent construction management and remediation, backed by 40 years building exceptional homes in Aspen, Jackson Hole, and the Willamette Valley.</p><p><strong>OR CCB# 250993 &middot; Licensed &amp; Insured</strong></p></div>
+      <div class="site-footer__col"><h4>Oregon</h4><p>Serving the Willamette Valley and Oregon Coast</p><p><a href="tel:+19709893064">970.989.3064</a><br/><a href="mailto:marty@acre.homes">marty@acre.homes</a></p></div>
+      <div class="site-footer__col"><h4>Aspen</h4><p>40 years of resort &amp; custom home work</p><p><a href="tel:+19709893064">970.989.3064</a><br/><a href="mailto:files@acre.homes">files@acre.homes</a></p></div>
+    </div><div class="site-footer__legal"><span>&copy; 2026 Aspen Custom Ranch Enterprises, LLC.</span><span>acre.homes</span></div></div></footer>
+  </div>
+</section>
+
+<!-- =================== ABOUT =================== -->
+<section class="page" id="about">
+  <div class="page-wrap">
+    <header class="site-header"><div class="container"><div class="site-header__inner">
+      <a href="#" data-go="home" class="site-logo"><img src="./public/ACRE-logo.png" alt="ACRE" class="site-logo__img"><span class="site-logo__sub">Property Problem Specialists</span></a>
+      <nav class="site-nav"><a href="#" data-go="for-realtors" class="site-nav__link">For Realtors</a><a href="#" class="site-nav__link">Contact</a><a href="tel:+19709893064" class="site-nav__phone">Call 970.989.3064</a></nav>
+    </div></div></header>
+
+    <main>
+      <section class="container hero">
+        <div class="eyebrow">About Marty Kribs</div>
+        <h1>Four decades of construction. One independent voice.</h1>
+        <p>After 40 years of building high-end resort properties and custom homes in Aspen, Colorado and Jackson Hole, Wyoming, I now do something simpler. I tell homeowners and real estate agents the truth about hard property problems, and I get them fixed right.</p>
+      </section>
+
+      <section class="container container--narrow prose">
+        <h2>What I actually do</h2>
+        <p class="lede">I'm an independent construction advisor and licensed general contractor. I do not have a crew of my own. That single fact changes everything about how I work for you.</p>
+        <p>Most contractors are trying to keep their crew busy and work to their experience and specialty. I offer a specialized service that fills that gap, backed by 40 years of judgment.</p>
+        <p>I don't have a crew. So when you call me about a foundation crack, a wet basement, a structural worry, or a house that won't pass inspection, I have no incentive to recommend the most expensive fix, or the fix my own team happens to be available for. I look at the problem. I tell you what it actually is. I tell you what it actually costs. Then I help you find the right pro to fix it. Or if you'd rather, I take it on as your builder.</p>
+
+        <h2>The 40 years</h2>
+        <p>I grew up in construction. By 1995, I was running high-end residential projects in <strong>Jackson, Wyoming</strong>, the kind of work where the budgets are large, the clients are sophisticated, and the consequences of a mistake are costly. From there I continued working in the custom home and resort space in <strong>Aspen, Colorado</strong>.</p>
+        <p>Resort construction teaches you things that production homebuilding cannot. It teaches you that the soil is rarely simple, that water is always trying to find your foundation, that the cheapest bid is usually the most expensive bid in disguise, and that the only thing standing between a beautiful project and a disaster is the judgment of the person managing it. That's the experience I brought to Oregon.</p>
+
+        <div class="gallery">
+          <div class="gallery__heading">Field Work. Aspen &amp; Jackson Hole</div>
+          <div class="gallery__row">
+            <div class="gallery__item"><img src="./src/assets/aspen-hillside-retaining-wall.jpeg" alt="Aspen retaining wall"><div class="gallery__caption"><b>Hillside retaining wall</b>Cast-in-place reinforced concrete against a rock cut. Roaring Fork Valley.</div></div>
+            <div class="gallery__item"><img src="./src/assets/aspen-cistern-formwork-pour.jpeg" alt="Cistern formwork pour"><div class="gallery__caption"><b>Property water cistern</b>Cast-in-place circular cistern formwork and pour. Pitkin County.</div></div>
+            <div class="gallery__item"><img src="./src/assets/ranch-cistern-snowy-mountains.jpeg" alt="Snowy ranch cistern install"><div class="gallery__caption"><b>Ranch cistern install</b>Precast cistern placement and site work, winter. Aspen area ranch.</div></div>
+          </div>
+          <div class="gallery__row">
+            <div class="gallery__item"><img src="./src/assets/hillside-drilling-rig.jpeg" alt="Drilling rig on hillside"><div class="gallery__caption"><b>Hillside stabilization</b>Drilled rock anchors / micropiles on a cut hillside lot.</div></div>
+            <div class="gallery__item"><img src="./src/assets/water-pipe-utility-install.jpeg" alt="Drainage reservoir intake pipe"><div class="gallery__caption"><b>Drainage Reservoir</b>Intake pipe with spin filter.</div></div>
+          </div>
+        </div>
+
+        <h2>Why I'm in Oregon</h2>
+
+        <div class="inset-portrait">
+          <img src="./src/assets/marty-family-oregon-coast.jpeg" alt="Marty with Blaire and Wesley in Newport">
+          <div class="inset-portrait__caption"><b>With Blaire and Wesley</b>Newport, Oregon &middot; Spring 2026</div>
+        </div>
+
+        <p>I'm currently developing a cottage cluster project in <strong>Philomath, Oregon</strong>, an 18-unit micro-resort I designed from the ground up. The Willamette Valley reminded me of the early Aspen years. A real community, real homes, real problems that deserve real answers.</p>
+        <p>What I found in the Mid-Willamette market is that most homeowners would benefit from a comprehensive solution to common site, water, and other remediation issues. The local design-build firms naturally focus on kitchens and bathrooms. The specialist trades are excellent at their specific work. But there was a need for taking a generalist approach that identifies and manages the best path forward. So I started doing that.</p>
+
+        <div class="gallery">
+          <div class="gallery__heading">Field Work. Oregon</div>
+          <div class="gallery__row">
+            <div class="gallery__item"><img src="./src/assets/oregon-interior-framing-surgery.jpeg" alt="Floor system surgery"><div class="gallery__caption"><b>Floor-system surgery</b>Opening up the floor system to fix what was hiding underneath.</div></div>
+            <div class="gallery__item"><img src="./src/assets/oregon-house-foundation-extension.jpeg" alt="Foundation extension Philomath"><div class="gallery__caption"><b>Foundation Repair</b>Philomath, Oregon. Mid-construction.</div></div>
+          </div>
+          <div class="gallery__row">
+            <div class="gallery__item"><img src="./src/assets/oregon-house-after-landscaped.jpeg" alt="Same house landscape side"><div class="gallery__caption"><b>Full Restoration</b>Philomath, Oregon. Landscape side.</div></div>
+            <div class="gallery__item"><img src="./src/assets/oregon-house-patio-detail.jpeg" alt="Same house porch detail"><div class="gallery__caption"><b>Lived in</b>Philomath, Oregon. Porch detail.</div></div>
+          </div>
+        </div>
+
+        <h2>How I'm different from a remodeler</h2>
+        <p>I take on the complex work most would like to avoid, backed by forty years of experience solving tough problems, specifically what's wrong, what it really costs, who should fix it, and what to watch for so it doesn't go sideways.</p>
+        <p>You can hire me three ways.</p>
+        <ul>
+          <li><strong>Property Advisor.</strong> A single visit, a written assessment, a real number for what it costs to fix. Often the only conversation you need.</li>
+          <li><strong>Owner's Representative.</strong> You stay in charge of the project. I plan it, find the right subs, watch the work, and report every dollar. You see everything.</li>
+          <li><strong>Licensed General Contractor.</strong> You want one person to own the whole job. I take it on under <em>Aspen Custom Ranch Enterprises, LLC</em>, fully licensed and insured.</li>
+        </ul>
+        <p>Same approach, three levels of involvement. You pick.</p>
+
+        <h2>The boring credentials</h2>
+        <ul>
+          <li><strong>Aspen Custom Ranch Enterprises, LLC.</strong> The legal entity that holds the license and the insurance.</li>
+          <li><strong>Oregon CCB# 250993.</strong> Licensed general contractor in the State of Oregon.</li>
+          <li><strong>Licensed &amp; Insured.</strong> Liability and workers comp on every project.</li>
+          <li><strong>Forty years</strong> in residential construction, predominantly high-end resort and custom homes.</li>
+        </ul>
+
+        <div style="text-align:center;margin:3rem 0">
+          <a href="tel:+19709893064" class="btn">Call Marty, 970.989.3064</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container"><div class="site-footer__legal"><span>&copy; 2026 Aspen Custom Ranch Enterprises, LLC.</span><span>acre.homes</span></div></div></footer>
+  </div>
+</section>
+
+<!-- =================== FOR REALTORS =================== -->
+<section class="page" id="for-realtors">
+  <div class="page-wrap">
+    <header class="site-header"><div class="container"><div class="site-header__inner">
+      <a href="#" data-go="home" class="site-logo"><img src="./public/ACRE-logo.png" alt="ACRE" class="site-logo__img"><span class="site-logo__sub">Property Problem Specialists</span></a>
+      <nav class="site-nav"><a href="#" data-go="about" class="site-nav__link">About Marty</a><a href="#" class="site-nav__link">Contact</a><a href="tel:+19709893064" class="site-nav__phone">Call 970.989.3064</a></nav>
+    </div></div></header>
+
+    <main>
+      <section class="container hero">
+        <div class="eyebrow">For Real Estate Agents</div>
+        <h1>We help your deals close.</h1>
+        <p>An inspection turned up something scary. The buyer is spooked. The listing is suddenly at risk. Call me before you call anyone else. I'll give you fast, honest answers, and the paperwork buyers, banks, and inspectors actually trust.</p>
+        <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="tel:+19709893064" class="btn">Call Marty, 970.989.3064</a>
+          <a href="#" class="btn btn--ghost">Refer a deal</a>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="feature">
+          <div class="feature__frame">
+            <img src="./src/assets/aspen-cistern-formwork-pour.jpeg" alt="Aspen cistern pour">
+            <div class="feature__caption">
+              <span><b>The contractor you're referring your client to.</b> Property-scale civil work, Aspen.</span>
+              <span>ACRE</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container container--narrow prose">
+        <h2>Why agents refer to ACRE</h2>
+        <p class="lede">Most contractors don't understand a transaction timeline. I do. I've been on the other side of a closing where one structural question killed a deal that didn't need to die. My whole approach is built around protecting your closing.</p>
+
+        <h3>Same-day diagnostic visits</h3>
+        <p>When something shows up on an inspection report and the clock is ticking, I'll be at the property within 24 hours wherever I can. I'll tell your client what's actually wrong, what it actually costs to fix, and whether the seller's price reflects it.</p>
+
+        <h3>Paperwork buyers and banks will accept</h3>
+        <p>A scary inspection finding without a credible cost estimate is a deal-killer. The same finding paired with a written assessment from a licensed general contractor, an itemized scope of work, and a real number is a negotiation.</p>
+
+        <h3>I'm not trying to win the rebuild work</h3>
+        <p>I have no in-house crew. My recommendations are scoped to what your client's situation actually needs, not what my schedule needs me to win.</p>
+
+        <h2>How to refer</h2>
+        <p>Easiest path. Text me at <strong>970.989.3064</strong> with the property address and a one-line summary. I'll call your client back within the hour during business hours.</p>
+
+        <div style="text-align:center;margin:3rem 0">
+          <a href="tel:+19709893064" class="btn">Call Marty, 970.989.3064</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container"><div class="site-footer__legal"><span>&copy; 2026 Aspen Custom Ranch Enterprises, LLC.</span><span>acre.homes</span></div></div></footer>
+  </div>
+</section>
+
+<!-- =================== FOUNDATION LP =================== -->
+<section class="page" id="foundation">
+  <div class="page-wrap">
+    <header class="site-header"><div class="container"><div class="site-header__inner">
+      <a href="#" data-go="home" class="site-logo"><img src="./public/ACRE-logo.png" alt="ACRE" class="site-logo__img"><span class="site-logo__sub">Property Problem Specialists</span></a>
+      <nav class="site-nav"><a href="#" data-go="about" class="site-nav__link">About Marty</a><a href="#" data-go="for-realtors" class="site-nav__link">For Realtors</a><a href="tel:+19709893064" class="site-nav__phone">Call 970.989.3064</a></nav>
+    </div></div></header>
+
+    <main>
+      <section class="container hero">
+        <div class="eyebrow">Corvallis, Oregon</div>
+        <h1>Foundation repair in Corvallis. Get a straight answer first.</h1>
+        <p>Cracks, settling, sloping floors, doors that won't latch right. Before you spend a dollar on piering or wall straps, get an independent diagnosis from someone who doesn't sell those services. I'll tell you what's actually wrong, what it actually costs, and who's the right pro to fix it.</p>
+        <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="tel:+19709893064" class="btn">Call for same-day diagnostic</a>
+          <a href="#" class="btn btn--ghost">Describe what's going on</a>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="lp-hero"><img src="./src/assets/hillside-drilling-rig.jpeg" alt="Drilling rig on a cut hillside"></div>
+      </section>
+
+      <section class="container container--narrow prose">
+        <h2>What I look for</h2>
+        <p class="lede">A foundation problem isn't one problem. It's a family of problems with very different fixes and very different price tags. The visit is about figuring out which one you have.</p>
+        <ul>
+          <li><strong>Settling vs. heaving.</strong> Is the foundation going down or being pushed up? They look similar from inside and require opposite fixes.</li>
+          <li><strong>Active vs. stable.</strong> Has the movement stopped, or is it still happening? Stable cracks get monitored. Active cracks get fixed.</li>
+          <li><strong>Wall vs. footing.</strong> Is the wall failing in shear or is the footing failing in bearing?</li>
+          <li><strong>Cause vs. symptom.</strong> Fixing the symptom without fixing the cause is the most expensive mistake homeowners make.</li>
+        </ul>
+
+        <h2>Common Corvallis foundation situations</h2>
+        <h3>1970s slab-on-grade homes with hairline cracks</h3>
+        <p>Almost always cosmetic. Worth confirming with a diagnostic visit before considering significant repair work. Often the right move is a simple monitoring approach with a date-stamped photo and an inexpensive crack monitor from the hardware store.</p>
+
+        <h3>Hillside homes with sloping floors</h3>
+        <p>The Corvallis hills hide a lot of homes built on questionable cuts and fills. The right fix might be piering, might be wall reinforcement, might be drainage correction. The cost difference between those three approaches is significant. Get the diagnosis right.</p>
+
+        <h3>Block foundations with stair-step cracking</h3>
+        <p>Real and shouldn't be ignored. Solutions range from carbon-fiber straps for minor cases to full rebuild with piering for severe ones. The right answer depends entirely on the assessment.</p>
+
+        <h2>How my visit works</h2>
+        <ol>
+          <li><strong>You call.</strong> 970.989.3064. Tell me what you're seeing.</li>
+          <li><strong>I come look.</strong> Usually within 24 hours, often same-day. About an hour.</li>
+          <li><strong>I tell you.</strong> Same day, in plain language: what's wrong, how serious it is, what to do.</li>
+          <li><strong>You decide.</strong> Written assessment, oversight as Owner's Rep, or take it on as your GC. Your call.</li>
+        </ol>
+
+        <div style="text-align:center;margin:3rem 0">
+          <a href="tel:+19709893064" class="btn">Call Marty, 970.989.3064</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container"><div class="site-footer__legal"><span>&copy; 2026 Aspen Custom Ranch Enterprises, LLC.</span><span>acre.homes</span></div></div></footer>
+  </div>
+</section>
+
+<!-- =================== PRE-LISTING LP =================== -->
+<section class="page" id="prelisting">
+  <div class="page-wrap">
+    <header class="site-header"><div class="container"><div class="site-header__inner">
+      <a href="#" data-go="home" class="site-logo"><img src="./public/ACRE-logo.png" alt="ACRE" class="site-logo__img"><span class="site-logo__sub">Property Problem Specialists</span></a>
+      <nav class="site-nav"><a href="#" data-go="about" class="site-nav__link">About Marty</a><a href="#" data-go="for-realtors" class="site-nav__link">For Realtors</a><a href="tel:+19709893064" class="site-nav__phone">Call 970.989.3064</a></nav>
+    </div></div></header>
+
+    <main>
+      <section class="container hero">
+        <div class="eyebrow">Willamette Valley</div>
+        <h1>Pre-listing repairs that save the deal and avoid focus on work that is optional.</h1>
+        <p>An inspector found something. The buyer is rattled. The listing agent is calling. You need a real number, fast, from someone who isn't trying to sell you the most expensive solution. That's me.</p>
+        <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="tel:+19709893064" class="btn">Call for same-day diagnostic</a>
+          <a href="#" class="btn btn--ghost">Describe the finding</a>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="before-after">
+          <div class="before-after__pair">
+            <div class="before-after__panel"><span class="before-after__tag">Before</span><img src="./src/assets/oregon-house-demolition-debris.jpeg" alt="Philomath house mid-demolition with debris pile and dumpster"></div>
+            <div class="before-after__panel"><span class="before-after__tag">After</span><img src="./src/assets/oregon-house-after-landscaped.jpeg" alt="Same Philomath house finished side view"></div>
+          </div>
+          <div class="before-after__caption">
+            <span><b>A Philomath property the seller couldn't list.</b> Foundation Repair and Full Restoration. Now a property the owners love.</span>
+            <span>ACRE</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="container container--narrow prose">
+        <h2>The three things that kill deals</h2>
+        <p class="lede">After 40 years of watching transactions, I can tell you that almost every dead deal dies for one of three reasons. A scary finding without a number, a bad-faith repair estimate from the wrong contractor, or a seller who hides something. I help with the first two.</p>
+
+        <h3>1. Scary finding without a number</h3>
+        <p>"There may be foundation movement." "Possible water intrusion in the crawlspace." Inspector phrases are deal-killers, not because the underlying issue is necessarily severe, but because uncertainty is what scares buyers. Get a real number and the conversation changes from "should I walk?" to "should I ask for a credit?"</p>
+
+        <h3>2. A scope mismatch from the wrong type of contractor</h3>
+        <p>When the inspector flags "possible foundation movement," the natural next call is a foundation specialist. The specialist is excellent at foundation work. But if the underlying issue is actually drainage, or settling that just needs monitoring, the result is a specialist-sized scope for a problem that may have called for a different answer. An independent assessment from a licensed GC who isn't tied to any single trade can confirm what the right scope actually is, and route the work to the best-matched specialist when work is genuinely needed. That gives buyer and seller a number both sides can work with.</p>
+
+        <h3>3. The seller who hides something</h3>
+        <p>Can't help with that one. But if you have a finding, get ahead of it. The Oregon residential disclosure form is unforgiving.</p>
+
+        <h2>Common pre-listing situations I handle</h2>
+        <ul>
+          <li><strong>Foundation findings on older Corvallis and Albany homes.</strong> We find the most efficient solution for the problem, no upsell.</li>
+          <li><strong>Wet crawlspaces in Willamette Valley properties.</strong> Most older homes have water issues that should be evaluated holistically for grading, drainage and vapor control. We guide the process for the cleanest resolution.</li>
+          <li><strong>Failed septic inspections in rural Philomath and Lebanon</strong>.</li>
+          <li><strong>Roof, electrical, and mold concerns flagged by the inspector</strong>.</li>
+        </ul>
+
+        <div style="text-align:center;margin:3rem 0">
+          <a href="tel:+19709893064" class="btn">Call Marty, 970.989.3064</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container"><div class="site-footer__legal"><span>&copy; 2026 Aspen Custom Ranch Enterprises, LLC.</span><span>acre.homes</span></div></div></footer>
+  </div>
+</section>
+
+<!-- Sticky phone CTA -->
+<a href="tel:+19709893064" class="phone-cta">
+  <svg class="phone-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  <span>Same-Day Diagnostic</span>
+</a>
+
+<script>
+function showTab(id){
+  document.querySelectorAll('.page').forEach(p => p.classList.toggle('active', p.id === id));
+  document.querySelectorAll('.preview-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === id));
+  window.scrollTo({top: 0, behavior: 'instant'});
+}
+document.querySelectorAll('.preview-tab').forEach(tab => {
+  tab.addEventListener('click', () => showTab(tab.dataset.tab));
+});
+document.querySelectorAll('[data-go]').forEach(link => {
+  link.addEventListener('click', (e) => { e.preventDefault(); showTab(link.dataset.go); });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import aspenRetainingWall from '../assets/aspen-hillside-retaining-wall.jpeg';
+import aspenCisternPour from '../assets/aspen-cistern-formwork-pour.jpeg';
+import ranchCistern from '../assets/ranch-cistern-snowy-mountains.jpeg';
+import hillsideDrilling from '../assets/hillside-drilling-rig.jpeg';
+import waterPipe from '../assets/water-pipe-utility-install.jpeg';
+import oregonFraming from '../assets/oregon-interior-framing-surgery.jpeg';
+import oregonFoundation from '../assets/oregon-house-foundation-extension.jpeg';
+import oregonAfter from '../assets/oregon-house-after-landscaped.jpeg';
+import oregonPatio from '../assets/oregon-house-patio-detail.jpeg';
+import familyPhoto from '../assets/marty-family-oregon-coast.jpeg';
+
+const aspenWork = [
+  { src: aspenRetainingWall, alt: "Workers at the base of a tall cast-in-place concrete retaining wall against a hillside cut, exposed rebar above.", title: "Hillside retaining wall", caption: "Cast-in-place reinforced concrete against a rock cut. Roaring Fork Valley." },
+  { src: aspenCisternPour, alt: "Crane truck pouring concrete into circular formwork for a property water cistern, mountain landscape in background.", title: "Property water cistern", caption: "Cast-in-place circular cistern formwork and pour. Pitkin County." },
+  { src: ranchCistern, alt: "Excavator placing precast concrete cisterns on a snowy ranch property with snow-capped mountains and distant houses.", title: "Ranch cistern install", caption: "Precast cistern placement and site work, winter. Aspen area ranch." },
+  { src: hillsideDrilling, alt: "B&Y Drilling rig drilling rock anchors or micropiles on a cut hillside, drill rods staged on the ground.", title: "Hillside stabilization", caption: "Drilled rock anchors / micropiles on a cut hillside lot." },
+  { src: waterPipe, alt: "Worker beside a large blue ductile-iron intake pipe with flanged coupling, drainage reservoir installation.", title: "Drainage Reservoir", caption: "Intake pipe with spin filter." },
+];
+const oregonWork = [
+  { src: oregonFraming, alt: "Interior framing work with floor joists cut open and tools staged, exposed wood structure.", title: "Floor-system surgery", caption: "Opening up the floor system to fix what was hiding underneath." },
+  { src: oregonFoundation, alt: "Older Philomath house mid-renovation, siding stripped and a new foundation being formed up alongside.", title: "Foundation Repair", caption: "Philomath, Oregon. Mid-construction." },
+  { src: oregonAfter, alt: "Philomath property after completion. Dark vertical siding, white trim, pergola covered in vines, hydrangeas and daylilies, paving-stone walkway, chickens in the foreground.", title: "Full Restoration", caption: "Philomath, Oregon. Landscape side." },
+  { src: oregonPatio, alt: "Same Philomath property porch with weathered Adirondack chairs, hanging basket of purple petunias and white lobelia in full bloom, garden plants and watering can.", title: "Lived in", caption: "Philomath, Oregon. Porch detail." },
+];
+---
+<BaseLayout
+  title="About Marty Kribs | ACRE"
+  description="40 years building exceptional homes in Aspen and Jackson Hole. Now in Oregon, helping homeowners and real estate agents fix the property problems no one else wants to touch."
+>
+  <section class="container hero">
+    <div class="eyebrow">About Marty Kribs</div>
+    <h1>Four decades of construction. One independent voice.</h1>
+    <p class="prose">After 40 years of building high-end resort properties and custom homes in Aspen, Colorado and Jackson Hole, Wyoming, I now do something simpler. I tell homeowners and real estate agents the truth about hard property problems, and I get them fixed right.</p>
+  </section>
+
+  <section class="container container--narrow prose">
+    <h2>What I actually do</h2>
+    <p class="lede">I'm an independent construction advisor and licensed general contractor. I do not have a crew of my own. That single fact changes everything about how I work for you.</p>
+    <p>Most contractors are trying to keep their crew busy and work to their experience and specialty. I offer a specialized service that fills that gap, backed by 40 years of judgment.</p>
+    <p>I don't have a crew. So when you call me about a foundation crack, a wet basement, a structural worry, or a house that won't pass inspection, I have no incentive to recommend the most expensive fix, or the fix my own team happens to be available for. I look at the problem. I tell you what it actually is. I tell you what it actually costs. Then I help you find the right pro to fix it. Or if you'd rather, I take it on as your builder.</p>
+
+    <h2>The 40 years</h2>
+    <p>I grew up in construction. By 1995, I was running high-end residential projects in <strong>Jackson, Wyoming</strong>, the kind of work where the budgets are large, the clients are sophisticated, and the consequences of a mistake are costly. From there I continued working in the custom home and resort space in <strong>Aspen, Colorado</strong>.</p>
+    <p>Resort construction teaches you things that production homebuilding cannot. It teaches you that the soil is rarely simple, that water is always trying to find your foundation, that the cheapest bid is usually the most expensive bid in disguise, and that the only thing standing between a beautiful project and a disaster is the judgment of the person managing it. That's the experience I brought to Oregon.</p>
+
+    <div class="gallery">
+      <div class="gallery__heading">Field Work. Aspen &amp; Jackson Hole</div>
+      <div class="gallery__row">
+        {aspenWork.slice(0, 3).map(({src, alt, title, caption}) => (
+          <div class="gallery__item">
+            <Image src={src} alt={alt} widths={[300, 500, 700]} sizes="(max-width: 800px) 50vw, 280px" loading="lazy" decoding="async" />
+            <div class="gallery__caption"><b>{title}</b>{caption}</div>
+          </div>
+        ))}
+      </div>
+      <div class="gallery__row">
+        {aspenWork.slice(3, 5).map(({src, alt, title, caption}) => (
+          <div class="gallery__item">
+            <Image src={src} alt={alt} widths={[300, 500, 700]} sizes="(max-width: 800px) 50vw, 280px" loading="lazy" decoding="async" />
+            <div class="gallery__caption"><b>{title}</b>{caption}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <h2>Why I'm in Oregon</h2>
+
+    <div class="inset-portrait">
+      <Image src={familyPhoto} alt="Marty Kribs (right) with his wife Blaire (center, yellow jacket) and son Wesley (left, blue jacket) on the beach in Newport, Oregon. All three in fleeces and beanies, Pacific Ocean behind them." widths={[300, 500, 700]} sizes="(max-width: 700px) 80vw, 360px" loading="lazy" decoding="async" />
+      <div class="inset-portrait__caption"><b>With Blaire and Wesley</b>Newport, Oregon &middot; Spring 2026</div>
+    </div>
+
+    <p>I'm currently developing a cottage cluster project in <strong>Philomath, Oregon</strong>, an 18-unit micro-resort I designed from the ground up. The Willamette Valley reminded me of the early Aspen years. A real community, real homes, real problems that deserve real answers.</p>
+    <p>What I found in the Mid-Willamette market is that most homeowners would benefit from a comprehensive solution to common site, water, and other remediation issues. The local design-build firms naturally focus on kitchens and bathrooms. The specialist trades are excellent at their specific work. But there was a need for taking a generalist approach that identifies and manages the best path forward. So I started doing that.</p>
+
+    <div class="gallery">
+      <div class="gallery__heading">Field Work. Oregon</div>
+      <div class="gallery__row">
+        {oregonWork.slice(0, 2).map(({src, alt, title, caption}) => (
+          <div class="gallery__item">
+            <Image src={src} alt={alt} widths={[300, 500, 700]} sizes="(max-width: 800px) 50vw, 280px" loading="lazy" decoding="async" />
+            <div class="gallery__caption"><b>{title}</b>{caption}</div>
+          </div>
+        ))}
+      </div>
+      <div class="gallery__row">
+        {oregonWork.slice(2, 4).map(({src, alt, title, caption}) => (
+          <div class="gallery__item">
+            <Image src={src} alt={alt} widths={[300, 500, 700]} sizes="(max-width: 800px) 50vw, 280px" loading="lazy" decoding="async" />
+            <div class="gallery__caption"><b>{title}</b>{caption}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <h2>How I'm different from a remodeler</h2>
+    <p>I take on the complex work most would like to avoid, backed by forty years of experience solving tough problems, specifically what's wrong, what it really costs, who should fix it, and what to watch for so it doesn't go sideways.</p>
+    <p>You can hire me three ways.</p>
+    <ul>
+      <li><strong>Property Advisor.</strong> A single visit, a written assessment, a real number for what it costs to fix. Often the only conversation you need.</li>
+      <li><strong>Owner's Representative.</strong> You stay in charge of the project. I plan it, find the right subs, watch the work, and report every dollar. You see everything.</li>
+      <li><strong>Licensed General Contractor.</strong> You want one person to own the whole job. I take it on under <em>Aspen Custom Ranch Enterprises, LLC</em>, fully licensed and insured.</li>
+    </ul>
+    <p>Same approach, three levels of involvement. You pick.</p>
+
+    <h2>The boring credentials</h2>
+    <ul>
+      <li><strong>Aspen Custom Ranch Enterprises, LLC.</strong> The legal entity that holds the license and the insurance.</li>
+      <li><strong>Oregon CCB# 250993.</strong> Licensed general contractor in the State of Oregon.</li>
+      <li><strong>Licensed &amp; Insured.</strong> Liability and workers comp on every project.</li>
+      <li><strong>Forty years</strong> in residential construction, predominantly high-end resort and custom homes.</li>
+    </ul>
+
+    <div style="text-align:center; margin: 3rem 0;">
+      <a href="tel:+19709893064" class="btn">Call Marty, 970.989.3064</a>
+      <a href="/contact/" class="btn btn--ghost" style="margin-left: .75rem;">Tell us what's wrong</a>
+    </div>
+  </section>
+</BaseLayout>
