@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://acre.homes/sitemap-index.xml
